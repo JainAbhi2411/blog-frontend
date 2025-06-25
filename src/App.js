@@ -22,7 +22,7 @@ function App() {
     setWordCount(0);
 
     try {
-      const res = await axios.post(" https://blog-api-slw8.onrender.com/api/generate", { prompt });
+      const res = await axios.post("https://blog-api.onrender.com/api/generate", { prompt });
       const content = res.data.blog;
       setBlog(content);
       setWordCount(content.trim().split(/\s+/).length);
