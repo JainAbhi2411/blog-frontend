@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { FaTwitter, FaLinkedin, FaFacebook, FaWhatsapp } from "react-icons/fa";
-
+const backendUrl = "https://blog-backend-gtx8.onrender.com" || "http://localhost:5000";
 function App() {
   const [prompt, setPrompt] = useState("");
   const [blog, setBlog] = useState("");
@@ -22,7 +22,7 @@ function App() {
     setWordCount(0);
 
     try {
-      const res = await axios.post("https://blog-api.onrender.com/api/generate", { prompt });
+      const res = await axios.post(`${backendUrl}/api/generate`, { prompt });
       const content = res.data.blog;
       setBlog(content);
       setWordCount(content.trim().split(/\s+/).length);
